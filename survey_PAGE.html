@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<title>Questionnaire</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Questionnaire">
+	<meta name="author" content="Amine_47">
+	<!-- CSS -->
+	<link href="https://unpkg.com/survey-jquery@1.9.32/modern.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/survey-jquery@1.9.32/survey.jquery.min.js"></script>
+	<script type="text/javascript" src="./visitor_fingerprint.js"></script>
+</head>
+
+<body class="is-preload" onload="start_TIMER=Date.now();">
+	<header id="header"></header>
+	<script>
+		const log_ON_date_TIME = new Date().toUTCString();
+	</script>
+	<div class="modal-body">
+		<div id="surveyContainer"></div>
+	</div>
+	<script type="text/javascript" src="./detect_device.js"></script>
+	<script type="text/javascript" src="./testSurveyDATA.js"></script>
+	<script type="text/javascript" src="./Survey_Script.js"></script>
+	</header>
+	<footer id="footer">
+		<ul class="icons">
+			<li><a href="mailto: amine.mimouni@um5r.ac.ma" class="icon fa-envelope"><span class="label">Email</span></a>
+			</li>
+			<li>Mohamed Amine MIMOUNI</li>
+		</ul>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/main.js"></script>
+</body>
+
+</html>

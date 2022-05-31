@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+
+<head>
+	<title>Questionnaire</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Questionnaire">
+	<meta name="author" content="Amine_47">
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="./visitor_fingerprint.js"></script>
+	<div class="alert_container">
+		<div class="alert" id="popUp" style="display: none;"><span style='font-size:47px;'>&#128522;</span>
+			<span>Heureux de vous voir à nouveau</span>
+		</div>
+	</div>
+	<script>
+		function to_MM_SS(mileseconds) {
+			mileseconds = mileseconds / 1000;
+			var minutes = Math.floor(mileseconds / 60);
+			var seconds = Math.round(mileseconds - (minutes * 60));
+			if (minutes == 0) { return seconds + ' seconds'; }
+			else {
+				return minutes + ' minutes et ' + seconds + ' seconds';
+			}
+		}
+
+		var dataBase_URL = "https://script.google.com/macros/s/AKfycbxKVRpf-CW4DujpEYPsGxQgA0VhjS9jJTiPPu3vBj68YhsElchO3RWCG3alfUStaCW53A/exec"
+		sessionStorage.setItem("dataBase_URL", dataBase_URL);
+		async function funcName(url) {
+			const response = await fetch(url);
+			var received_data = await response.json();
+			var mean_elapsed_time;
+			mean_elapsed_time = to_MM_SS(received_data["mean_elapsed_time"]);
+			eval('var fingerprints_table = received_data["all_fingerprints"]');
+			if (fingerprints_table.includes(visitorId)) {
+				$("#popUp").show("slow");
+				setTimeout(function () {
+					$("#popUp").hide("slow");
+				}, 5000);
+			}
+			document.getElementById('mean_elapsed_time').innerHTML = "En tenant compte du temps pris par les participants précédents, ce questionnaire va vous prendra environ " + Math.floor(received_data["mean_elapsed_time"] / 60000) + " minutes. (la moyenne calculée est : " + mean_elapsed_time + ")";
+		}
+		funcName(dataBase_URL);
+
+	</script>
+
+
+</head>
+
+<body class="is-preload" onload="start_TIMER=Date.now();">
+	<script>
+		sessionStorage.setItem("selected_Lang", "fr");
+		var Lang;
+		var selected_Lang;
+		function change_locale_language() {
+			Lang = document.getElementById("lang_select");
+			localStorage.setItem("lastname", "Smith");
+			selected_Lang = Lang.options[Lang.selectedIndex].value;
+			sessionStorage.setItem("selected_Lang", selected_Lang);
+			console.log(selected_Lang)
+			//survey.setVariable("locale", selected_Lang);
+		}
+	</script>
+	<select name="lang" id="lang_select" onchange="change_locale_language()">
+		<option value="fr" selected disabled hidden>Changer la langue de l'interface</option>
+		<option value="ar">العربية</option>
+		<option value="en">English</option>
+		<option value="fr">Français</option>
+	</select>
+	<!-- Header -->
+	<header id="header">
+		<h1>Bonjour</h1>
+		<p>Je m'appelle <b>"Mohamed Amine MIMOUNI"</b> et je suis étudiant à la <b><a href="fse.um5.ac.ma">FSE
+					Rabat</a></b>.<br>
+			Dans le cadre de mon projet de fin d'études intitulé
+			<b>"Les <a href="https://fr.wikipedia.org/wiki/Technologies_de_l'information_et_de_la_communication">TIC</a>
+				et l’enseignement des mathématiques :
+				Enjeux et défis de l’intégration"</b>,
+			J'ai initié une étude qui demande à être enrichie grâce à votre participation à ce questionnaire ; son
+			objectif principal est de découvrir le taux d'intégration des TIC dans les lycées marocains afin de pouvoir
+			identifier les différents obstacles qui peuvent entraver les efforts d'intégration des TIC dans
+			l'enseignement des mathématiques.
+		</p>
+		<p id="mean_elapsed_time"></p><br>
+
+
+		<form method="GET" action="survey_PAGE.html">
+			<input type="submit" value="Commencer!" style="float: right;">
+		</form>
+	</header>
+	<!-- Footer -->
+	<footer id="footer">
+		<ul class="icons">
+			<li><a href="mailto: abc@gg.fr" class="icon fa-envelope"><span class="label">Email</span></a>
+			</li>
+			<li>Mohamed Amine MIMOUNI</li>
+		</ul>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

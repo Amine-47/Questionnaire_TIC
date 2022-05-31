@@ -40,7 +40,7 @@
 					$("#popUp").hide("slow");
 				}, 5000);
 			}
-			document.getElementById('mean_elapsed_time').innerHTML = "En tenant compte du temps pris par les participants précédents, ce questionnaire va vous prendra environ " + Math.floor(received_data["mean_elapsed_time"] / 60000) + " minutes. (la moyenne calculée est : " + mean_elapsed_time + ")";
+			document.getElementById('mean_elapsed_time').innerHTML = "Il y a un total de 26 questions réparties sur 6 pages dans ce questionnaire, qui pourrait vous prendre environ " + Math.floor(received_data["mean_elapsed_time"] / 60000) + " minutes pour les répondre, compte tenu du temps pris par les participants précédents.<br>(la durée moyenne calculée est : " + mean_elapsed_time + ")";
 		}
 		funcName(dataBase_URL);
 

@@ -24,7 +24,6 @@ function sendDataToServer(survey, options) {
     console.log(log_ON_date_TIME, elapsed_TIME, Duration, deviceType, visitorId, survey.data)
     //[deviceType, JSON.stringify(survey.data)]
     $.ajax({
-        //original spreadsheet: https://docs.google.com/spreadsheets/d/1WTtD8F2dtI4aiS8gZCGdicW7d3-8TY5uUfBHPHNO1oY/edit?usp=sharing
         url: dataBase_URL,
         type: 'post',
         dataType: 'json',
